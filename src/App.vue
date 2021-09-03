@@ -1,7 +1,9 @@
 <template>
   <div id="App">
     <Navbar></Navbar>
+    <transition name="fade" >
       <router-view></router-view>
+    </transition>
     <Footer></Footer>
     <!-- ROUTER VIEW QUE CARGARÁ LAS VISTAS (INICIO, SOBRE MÍ, CONTACTO, ETC.) -->
     
@@ -30,5 +32,22 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.fade-enter-active,
+.fade-leave-active{
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+</style>
+
+<style>
+
+  body {
+    margin-top: 66.6px;
+  }
 
 </style>

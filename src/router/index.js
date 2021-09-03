@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Inicio from "../views/Inicio.vue";
-import Entrada from "../views/Entrada.vue";
-import Articulo from "../views/Articulo.vue";
-import Contacto from "../views/Contacto.vue";
-import SobreMi from "../views/SobreMi.vue";
+
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,34 +11,69 @@ const routes = [
     path: '/',
     redirect: '/Inicio',
   },
-  
+  {
+    path: '*',
+    component: () => import(/* webpackChunkName: "NotFound" */'../views/NotFound.vue') 
+  },
   {
     path: '/Inicio',
     name: 'Inicio',
-    component: Inicio,
+    component: () => import(/* webpackChunkName: "Inicio" */'../views/Inicio.vue')
   },
   {
     path: '/Entrada',
     name: 'Entrada',
-    component: Entrada,
+    component: () => import(/* webpackChunkName: "Entrada" */'../views/Entrada.vue'),
     children: [
       {
         path: ':Articulo',
         name: 'Articulo',
-        component: Articulo,
+        component: () => import(/* webpackChunkName: "Articulo" */'../views/Articulo.vue'),
       },
     ]
   },
   {
     path: '/Contacto',
     name: 'Contacto',
-    component: Contacto,
+    alias: ['/contactame'],
+    component: () => import(/* webpackChunkName: "Contacto" */'../views/Contacto.vue'),
   },
   {
     path: '/SobreMi',
     name: 'SobreMi',
-    component: SobreMi,
+    alias: ['/acerca'],
+    component: () => import(/* webpackChunkName: "SobreMi" */'../views/SobreMi.vue'),
   },
+  {
+      path: '/Administrador',
+      name: 'Administrador',
+      component: () => import(/* webpackChunkName: "Administrador" */'../views/Administrador.vue'),
+      children: [
+        {
+          path: '/Simple',
+          name: 'AdministradorSimple',
+          component: () => import(/* webpackChunkName: "AdministradorSimple" */'../views/Simple.vue') 
+        },
+        {
+          path: '/Avanzado',
+          name: 'AdministradorAvanzado',
+          component: () => import(/* webpackChunkName: "AdministradorAvanzado" */'../views/Avanzado.vue') 
+        },
+      ]
+  },
+  {
+    path: "/home",
+    redirect: "/"
+  },
+  {
+    path: "/portada",
+    redirect: "/"
+  },
+  {
+    path: "/inicio",
+    redirect: "/"
+  },
+
 
 ]
 

@@ -1,6 +1,6 @@
 <template>
   <div id="Navbar">
-      <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+      <nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: black;" id="mainNav">
       <div class="container">
         <a class="navbar-brand">V8</a
         ><button
@@ -32,6 +32,14 @@
               <!-- REEMPLAZAR CON ELEMENTO ROUTER LINK A RUTA ESTÁTICA -->
               <router-link to="/Entrada/1">último Post</router-link>
             </li>
+             <li class="nav-item" role="presentation">
+              <!-- REEMPLAZAR CON ELEMENTO ROUTER LINK A CON RUTA ESTÁTICA -->
+              <router-link :to="{name: 'AdministradorSimple'}">Administrador Simple</router-link>
+            </li>
+             <li class="nav-item" role="presentation">
+              <!-- REEMPLAZAR CON ELEMENTO ROUTER LINK A CON RUTA ESTÁTICA -->
+              <router-link :to="{name: 'AdministradorAvanzado'}">Administrador Avanzado</router-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -49,4 +57,7 @@ export default {
 #menu-v8 router-link {
   text-shadow: 1px 1px #000;
 }
+
+
+
 </style>
